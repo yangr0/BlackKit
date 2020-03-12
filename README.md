@@ -8,6 +8,10 @@ This tool relies solely on pull requests
 
 To improve this tool, you must make a pull request so it can get better
 
+Join the official discord server to have disccusions!
+
+https://discord.gg/8pKQMUA
+
 # Installation
 
 `git clone https://github.com/iinc0gnit0/BlackKit`
