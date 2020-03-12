@@ -1,5 +1,5 @@
-# BlackKitHacking Toolkit
-Powered by Pull Requests
+# BlackKit
+Hacking Toolkit Powered by Pull Requests
 
 # How It Works
 This tool relies solely on pull requests
