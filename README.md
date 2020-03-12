@@ -14,5 +14,5 @@ To improve this tool, you must make a pull request so it can get better
 # Usage
 `python3 blackkit.py`
 
-# Updata
+# Update
 `git pull`
