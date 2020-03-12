@@ -8,6 +8,8 @@ This tool relies solely on pull requests
 
 To improve this tool, you must make a pull request so it can get better
 
+If you aren't sure how to make one go [here](https://www.youtube.com/watch?v=rgbCcBNZcdQ)
+
 Join the official discord server to have disccusions!
 
 https://discord.gg/8pKQMUA
