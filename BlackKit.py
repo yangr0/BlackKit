@@ -77,44 +77,61 @@ def Banner():
     print(White + 80 * "═")
     print(White + 80 * "═")
 
-
-
 def Main():
-    inp = input(White + "[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
-    if inp == "?":
+
+    inp = input(White + "[" + Green + "BlackKit" + White + "]" + Green + """
+    	\n  ╚═>  [+]Choose options:
+
+    =>	1)	help				=> 12) database
+    =>	2)	exit          			=> 13) firewall
+    =>	3)	restore(menu)   		=> 14) sniffing				
+    =>	4)	ping 				=> 15) localchat
+    =>	5)	wifi 				=> 16) bruteforce
+    =>	6)	recon 				=> 17) hashcracker
+    =>	7)    	tools
+    =>	8)	other
+    =>	9)	whoami
+    =>	10)	evasion
+    =>	11)	payload
+
+
+]:> """)
+
+    	
+    if inp == 1:
         Help()
-    elif inp == "x":
+    elif inp == 2:
         sys.exit()
         subprocess.call('clear', shell=True)
-    elif inp == "r":
+    elif inp == 3:
         os.system("clear && ./BlackKit.py")
-    elif inp == "ping":
+    elif inp == 4:
         Ping()
-    elif inp == "wifi":
+    elif inp == 5:
         Wifi()
-    elif inp == "recon":
+    elif inp == 6:
         Recon()
-    elif inp == "tools":
+    elif inp == 7:
         Tools()
-    elif inp == "other":
+    elif inp == 8:
         Other()
-    elif inp == "whoami":
+    elif inp == 9:
         Whoami() 
-    elif inp == "evasion":
+    elif inp == 19:
         Evasion()
-    elif inp == "payload":
+    elif inp == 11:
         Payload()
-    elif inp == "database":
+    elif inp == 12:
         Database()
-    elif inp == "firewall":
+    elif inp == 13:
         Firewall()
-    elif inp == "sniffing":
+    elif inp == 14:
         Sniffing()
-    elif inp == "localchat":
+    elif inp == 15:
         Localchat()
-    elif inp == "bruteforce":
+    elif inp == 16:
         Bruteforce()
-    elif inp == "hashcracker":
+    elif inp == 17:
         Hashcracker()
     else:
         Exe()
