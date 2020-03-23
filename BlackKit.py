@@ -4,7 +4,7 @@
 
 
 # Contributors:
-#---------------
+# ---------------
 # @Cracked.keys
 # @inc0gnit0
 # @
@@ -33,20 +33,12 @@ try:
     import subprocess
     from datetime import date
 except ImportError:
-    print(Red+ "Failed to import modules")
+    print(Red + "Failed to import modules")
 
 
 
 # Functions.
 today = date.today()
-
-
-
-def Exe():
-    Banner()
-    Main()
-    subprocess.call('clear', shell=True)
-    print(Green + "\n\nExiting....\n")
 
 
 
@@ -58,21 +50,32 @@ def Checkroot():
 
 
 
+def Exe():
+    if os.getuid() != 0:
+        subprocess.call('clear', shell=True)
+        print(Red + "\nPlease run BlackKit with sudo privledges.\n")
+        time.sleep(3)
+        subprocess.call('clear', shell=True)
+    else:
+        Banner()
+        Main()
+
+
+
 def Banner():
     subprocess.call('clear', shell=True)
-    print("                                                                     ")
-    print("                                                                     ")
+    print(" ")
     print(Green + 11 * " " + "██████╗ ██╗      █████╗  ██████╗██╗  ██╗██╗  ██╗██╗████████╗") 
     print(Green + 11 * " " + "██╔══██╗██║     ██╔══██╗██╔════╝██║ ██╔╝██║ ██╔╝██║╚══██╔══╝")
     print(Green + 11 * " " + "██████╔╝██║     ███████║██║     █████╔╝ █████╔╝ ██║   ██║   ")
     print(Green + 11 * " " + "██╔══██╗██║     ██╔══██║██║     ██╔═██╗ ██╔═██╗ ██║   ██║   ") 
     print(Green + 11 * " " + "██████╔╝███████╗██║  ██║╚██████╗██║  ██╗██║  ██╗██║   ██║   ") 
     print(Green + 11 * " " + "╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝   ╚═╝   ")   
-    Checkroot()
-    print(Green + 22 * " " + "╔═══════════════════════════════════╗")
-    print(Green + 22 * " " + "║                                   ║")
-    print(Green + 22 * " " + "║                                   ║")
-    print(Green + 22 * " " + "╚═══════════════════════════════════╝      ")
+    print(" ")
+    print(White + 22 * " " + "╔═══════════════════════════════════╗")
+    print(White + 22 * " " + "║                                   ║")
+    print(White + 22 * " " + "║                                   ║")
+    print(White + 22 * " " + "╚═══════════════════════════════════╝      ")
     print(68 * " " + Green + "? " + White + "for help" + Green + ".")
     print(White + 80 * "═")
     print(White + 80 * "═")
@@ -106,12 +109,8 @@ def Main():
         Payload()
     elif inp == "database":
         Database()
-    elif inp == "firewall":
-        Firewall()
     elif inp == "sniffing":
         Sniffing()
-    elif inp == "localchat":
-        Localchat()
     elif inp == "bruteforce":
         Bruteforce()
     elif inp == "hashcracker":
@@ -127,6 +126,7 @@ def Help():
             > Here are a list of commands to use for this script <
 
 \033[92m     Command                     Description\033[97m
+════════════════════════════════════════════════════════════════════════════════
 ═════════════════════════════════════════════════════════════════════════════════  
 \033[92m        x               - Will quit the script.
         r               - Will restart the script.
@@ -138,32 +138,23 @@ def Help():
         whoami          - Gives you system info.              
         evasion         - Technique's and spoofing.
         payload         - Automated payloads for attacking.
-        database        - Configure options for database directory.
         sniffing        - Wireshark or tcpdump for sniffing. 
-        localchat       - Chat to another system via ncat.
         bruteforce      - Bruteforcing options.
         hashcracker     - Uses John to crack hashes.""")
-        print(White + 80 * "═" + "\n")
+        print(White + 80 * "═")
+
         Main()
 
 
 
 def Ping():
     subprocess.call('clear', shell=True)
-    target = input(Green + "\nEnter IP\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+    target = input(Green + "\nEnter IP\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
     print("                  ")
     os.system("ping " + target)
     print("                  ")
-    print(80 * "═")
-    print("Would you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-    YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-    if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-        Exe()
-    elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
-        sys.exit()
-        subprocess.call('clear', shell=True)
-    else:
-        Ping()
+    print(White + 80 * "═")
+    Main()
 
 
 
@@ -171,10 +162,10 @@ def Wifi():
     # Work in progress.
     subprocess.call('clear', shell=True)
     print(White + 80 * "═" + "\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " ")
-    print(Green + "[" + White + "2" + Green + "]" + White + " ")
-    print(Green + "[" + White + "x" + Green + "]" + White + " Main menu")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "1" + White + "]" + Green + " ")
+    print(White + "[" + Green + "x" + White + "]" + Green + " Main menu")
+    
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
     else:
@@ -185,35 +176,36 @@ def Wifi():
 def Recon():
     # Needs work.
     subprocess.call('clear', shell=True)
-    print(80 * "═" + "\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " OS Scan          ")        
-    print(Green + "[" + White + "2" + Green + "]" + White + " Port Scan        ")        
-    print(Green + "[" + White + "3" + Green + "]" + White + " Active Scan      ")
-    print(Green + "[" + White + "4" + Green + "]" + White + " Network Scan     ")
-    print(Green + "[" + White + "5" + Green + "]" + White + " Service Scan     ")
-    print(Green + "[" + White + "x" + Green + "]" + White + " Main menu        ")
+    print(White + 80 * "═" + "\n")
+    print(White + "[" + Green + "1" + White + "]" + Green + " OS Scan          ")        
+    print(White + "[" + Green + "2" + White + "]" + Green + " Port Scan        ")        
+    print(White + "[" + Green + "3" + White + "]" + Green + " Active Scan      ")
+    print(White + "[" + Green + "4" + White + "]" + Green + " Network Scan     ")
+    print(White + "[" + Green + "5" + White + "]" + Green + " Service Scan     ")
+    print(White + "[" + Green + "x" + White + "]" + Green + " Main menu        ")
+    
     filename = str(today) + "results.txt"
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
     elif inp == "1":
-        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        os.system("sudo nmap -O " + target + " -oG " + filename)
+        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
+        os.system("nmap -O " + target + " -oG " + filename)
         os.system("mv " + filename + " Database/Recon_scans/")
     elif inp == "2":
-        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         os.system("nmap -p- " + target + " -oG " + filename)
         os.system("mv " + filename + " Database/Recon_scans/")
     elif inp == "3":
-        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         os.system("nmap -A " + target + " -oG " + filename)
         os.system("mv " + filename + " Database/Recon_scans/")
     elif inp == "4":
-        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         os.system("nmap -sS -Pn -n --disable-arp-ping " + target + " -oG " + filename)
         os.system("mv " + filename + " Database/Recon_scans/")
     elif inp == "5":
-        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+        target = input(Green + "\nEnter IP\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         os.system("nmap -sV --script=banner " + target + " -oG " + filename)
         os.system("mv " + filename + " Database/Recon_scans/")
     else:
@@ -225,12 +217,10 @@ def Tools():
     # Finish.
     subprocess.call('clear', shell=True)
     print("Here's a list of tools to install...\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " Anonsurf")
-    print(Green + "[" + White + "2" + Green + "]" + White + " Anonsurf")
-    print(Green + "[" + White + "3" + Green + "]" + White + " Anonsurf")
-    print(Green + "[" + White + "4" + Green + "]" + White + " Anonsurf")
-    print(Green + "[" + White + "x" + Green + "]" + White + " Main menu")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "1" + White + "]" + Green + " Anonsurf")
+    print(White + "[" + Green + "2" + White + "]" + Green + "         ")
+    
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
     else:
@@ -239,81 +229,56 @@ def Tools():
 
 
 def Other():
-    # Work in prgress.
+    # Work in progress.
     subprocess.call('clear', shell=True)
     print(" ")
-    print(Green + "[" + White + "1" + Green + "]" + White + " Whois")
-    print(Green + "[" + White + "2" + Green + "]" + White + " Wafw00f")
-    print(Green + "[" + White + "3" + Green + "]" + White + " IP lookup")
-    print(Green + "[" + White + "4" + Green + "]" + White + " DNS lookup")
-    print(Green + "[" + White + "5" + Green + "]" + White + " What's my IP?")
-    print(Green + "[" + White + "6" + Green + "]" + White + " Identify hash")
-    print(Green + "[" + White + "7" + Green + "]" + White + " Reverse IP lookup")
-    print(Green + "[" + White + "8" + Green + "]" + White + " Active interface's")
-    print(Green + "[" + White + "9" + Green + "]" + White + " Reverse DNS lookup")
-    print(Green + "[" + White + "x" + Green + "]" + White + " Main menu")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "1" + White + "]" + Green + " Whois")
+    print(White + "[" + Green + "2" + White + "]" + Green + " Wafw00f")
+    print(White + "[" + Green + "3" + White + "]" + Green + " IP lookup")
+    print(White + "[" + Green + "4" + White + "]" + Green + " DNS lookup")
+    print(White + "[" + Green + "5" + White + "]" + Green + " What's my IP?")
+    print(White + "[" + Green + "6" + White + "]" + Green + " Identify hash")
+    print(White + "[" + Green + "7" + White + "]" + Green + " Reverse IP lookup")
+    print(White + "[" + Green + "8" + White + "]" + Green + " Active interface's")
+    print(White + "[" + Green + "9" + White + "]" + Green + " Reverse DNS lookup")
+    print(White + "[" + Green + "x" + White + "]" + Green + " Main menu")
     
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
-        
     elif inp == "1":
-        target = input(Green + "\nEnter domain\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+        target = input(Green + "\nEnter domain\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         os.system("whois " + target)
-        
     elif inp == "2":
-        target = input(Green + "\nEnter domain\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+        target = input(Green + "\nEnter domain\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         os.system("wafw00f " + target)
-        
     elif inp == "4":
-        target = input(Green + "\nEnter domain\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
+        target = input(Green + "\nEnter domain\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         os.system("nslookup " + target)
         print( Green + 80 * "-" + End)
         os.system("dig " + target)
-        
     elif inp == "5":
-        print(80 * "═")
-        print("\nPublic IP\n" + 25 * "-")
-        os.system("dig +short myip.opendns.com @resolver1.opendns.com")
-        print("\nIPv4 Address\n" + 25 * "-")
+        print(White + 80 * "═")
+        print(Green + "\nPublic IP\n" + White + 25 * "-" + End)
+        os.system("sudo curl icanhazip.com")
+        print(Green + "\nIPv4 Address\n" + White + 25 * "-" + End)
         os.system("ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'")
-        print("\nIPv6 Address\n" + 25 * "-")
+        print(Green + "\nIPv6 Address\n" + White + 25 * "-" + End)
         os.system("ip addr | grep 'state UP' -A4 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'")
-        print("\n" + 80 * "═")
-        print("Would you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-        YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        
-        if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-            Exe()
-            
-        elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
-            sys.exit()
-            subprocess.call('clear', shell=True)
-            
+        print(White + "\n" + 80 * "═")
+        Main()
     elif inp == "6":
-        dahash = input("\nEnter Hash" + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        os.system("hashid " + dahash)
-        
+        Thehash = input("\nEnter Hash" + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
+        os.system("hashid " + Thehash)
     elif inp == "7":
         os.system(" ")
-        
     elif inp == "8":
         print(Green + " ")
         os.system("ifconfig")
-        print("\n" + End + 80 * "=")
-        print("Would you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-        YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        
-        if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-            Exe()
-            
-        elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
-            sys.exit()
-            subprocess.call('clear', shell=True)
-            
+        print("\n" + White + 80 * "=")
+        Main()
     elif inp == "9":
         os.system("dig -x " + target)
-        
     else:
         Other()
 
@@ -323,185 +288,98 @@ def Whoami():
     print(White + 80 * "═")
     Checkroot()
     print(White + 80 * "═")
-    print("\nCurrent user.\n" + Green + 25 * "-" + End)
+    print(Green + "\nCurrent user.\n" + White + 25 * "-" + End)
     os.system("whoami")
-    print("\nCurrent logged on users.\n" + Green + 25 * "-" + End)
+    print(Green + "\nCurrent logged on users.\n" + White + 25 * "-" + End)
     os.system("w")
-    print("\nLast logged on users.\n" + Green + 25 * "-" + End)
+    print(Green + "\nLast logged on users.\n" + White + 25 * "-" + End)
     os.system("last -a")
     print(White + 80 * "═")
-    print("Kernal info.\n" + Green + 25 * "-" + End)
+    print(Green + "Kernal info.\n" + White + 25 * "-" + End)
     os.system("uname -a")
     os.system("cat /proc/version")
     print(White + 80 * "═")
-    print("Operating system info.\n" + Green + 25 * "-" + End)
+    print(Green + "Operating system info.\n" + White + 25 * "-" + End)
     os.system("cat /etc/issue")
     os.system("cat /etc/*release*")
     print(White + 80 * "═")
-    if os.getuid() != 0:
-        os.system(Green + " You are not root!" + End)
-        print(White + 80 * "═")
+    Main()
+        
 
-    else:
-        os.system("cat /etc/shadow")
-        print(White + 80 * "═")
-    print("Would you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-    YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-    
-    if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-        Exe()
-        
-    elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
-        sys.exit()
-        subprocess.call('clear', shell=True)
-        
-        
 
 def Evasion():
-    # Start.)
+    # Work in progress
     subprocess.call('clear', shell=True)
     print(White + 80 * "═" + "\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " ")
-    print(Green + "[" + White + "2" + Green + "]" + White + " ")
-    print(Green + "[" + White + "x" + Green + "]" + White + " Main menu")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "1" + White + "]" + Green + " ")
+    print(White + "[" + Green + "2" + White + "]" + Green + " ")
+    print(White + "[" + Green + "x" + White + "]" + Green + " Main menu")
     
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
-        
     else:
         Evasion()
 
 
 
 def Payload():
-    # Finish.
+    # Work on.
     subprocess.call('clear', shell=True)
     print(White + 80 * "═" + "\n")
-    print(Green + "[" + White + "3" + Green + "]" + White + " TCP Payload for MacOS")
-    print(Green + "[" + White + "3" + Green + "]" + White + " TCP Payload for Linux")
-    print(Green + "[" + White + "3" + Green + "]" + White + " TCP Payload for Android")
-    print(Green + "[" + White + "1" + Green + "]" + White + " TCP Payload for Windows")
-    print(Green + "[" + White + "2" + Green + "]" + White + " HTTP Payload for Windows")
-    print(Green + "[" + White + "3" + Green + "]" + White + " ")
-    print(Green + "[" + White + "3" + Green + "]" + White + " ")
-    print(Green + "[" + White + "3" + Green + "]" + White + " ")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "3" + White + "]" + Green + " TCP Payload for MacOS")
+    print(White + "[" + Green + "3" + White + "]" + Green + " TCP Payload for Linux")
+    print(White + "[" + Green + "3" + White + "]" + Green + " TCP Payload for Android")
+    print(White + "[" + Green + "1" + White + "]" + Green + " TCP Payload for Windows")
     
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
-        
     elif inp == "1":
         os.system("")
-        
     else:
         Payload()
 
+        
 
 def Database():
     # Work in progress.
     subprocess.call('clear', shell=True)
     print(White + 80 * "═" + "\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " Show Database.")
-    print(Green + "[" + White + "2" + Green + "]" + White + " Gen Atomic Dir.")
-    print(Green + "[" + White + "?" + Green + "]" + White + " Show help.")
-    print(Green + "[" + White + "x" + Green + "]" + White + " Main menu.")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "1" + White + "]" + Green + " Create Database.")
+    print(White + "[" + Green + "2" + White + "]" + Green + " Show databases")
+    print(White + "[" + Green + "x" + White + "]" + Green + " Main menu.")
     
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
-        
     elif inp == "1":
-        print("\n" + 80 * "═")
-        os.system("ls Database/")        
-        print("\nWould you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-        YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        
-        if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-            Exe()
-            
-        elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
-            sys.exit()
-            subprocess.call('clear', shell=True)
-            
+        print(" ")    
     elif inp == "2":
         print(" ")
-        
-    elif inp == "?":
-        print("""\n
-            > Here are a list of commands to use for this script <
-
-     command                     info 
---------------------------------------------------------------------------------
-        q               - Will quit the script
-        r               - Will restart Database option.
-        l               - 
-        c               - 
-        """)
-        
     else:
         Database()
 
 
 
-def Firewall():
-    # Work in progress.
-    print("")
 
 def Sniffing():
-    # Work in progress.
+    # TCPdump needs to be finsihed
     subprocess.call('clear', shell=True)
     print(White + 80 * "═" + "\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " TCPdump")
-    print(Green + "[" + White + "2" + Green + "]" + White + " Wireshark")
-    print(Green + "[" + White + "x" + Green + "]" + White + " Main menu")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "1" + White + "]" + Green + " TCPdump")
+    print(White + "[" + Green + "2" + White + "]" + Green + " Wireshark")
+    print(White + "[" + Green + "x" + White + "]" + Green + " Main menu")
+    
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "x":
         Exe()
     elif inp == "1":
         os.system("")
-    elif inp == "tcpdump":
+    elif inp == "":
         os.system("sudo wireshark > /dev/null 2>&1")
     else:
         Sniffing()
-
-
-
-def Localchat():
-    subprocess.call('clear', shell=True)
-    print(White + 80 * "═" + "\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " Open Netcat Window for chatting.")
-    print(Green + "[" + White + "2" + Green + "]" + White + " Connect to host to chat using Netcat.")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
-    if inp == "1":
-        port = input(End + "\nEnter " + Green + "port" + White + " to connect to" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        os.system("nc -lp " + port)
-        print("\nWould you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-        YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        
-        if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-            Exe()
-            
-        elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
-            sys.exit()
-            subprocess.call('clear', shell=True)
-            
-    elif inp == "2":
-        ipadd = input(End + "\nEnter " + Green + "IP address" + White + " to connect to" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        port = input(End + "\nEnter " + Green + "port" + White + " to connect to" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        os.system("nc " + ipadd + " -p " + port)
-        print("\nWould you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-        YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
-        
-        if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-            Exe()
-            
-        elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
-            sys.exit()
-            subprocess.call('clear', shell=True)
-            
-    else:
-        Localchat()
 
 
 
@@ -509,42 +387,44 @@ def Bruteforce():
     # Finish Medusa option.
     subprocess.call('clear', shell=True)
     print(White + 80 * "═" + "\n")
-    print(Green + "[" + White + "1" + Green + "]" + White + " Hydra")
-    print(Green + "[" + White + "2" + Green + "]" + White + " Medusa")
-    print(Green + "[" + White + "3" + Green + "]" + White + " Main menu")
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print(White + "[" + Green + "1" + White + "]" + Green + " Hydra")
+    print(White + "[" + Green + "2" + White + "]" + Green + " Medusa")
+    print(White + "[" + Green + "3" + White + "]" + Green + " Main menu")
     
+    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
     if inp == "1":
         print(Green + "\nSpawning the Hydra... >" + White + ":)")
         time.sleep(2)
         print(Green + "\nHydra spawned........\n" + Green + "\n       (" + White + "Ctrl+c to quit" + Green + "!!" + Green + ")" + End)
         os.system("xhydra > /dev/null 2>&1")
         print("\nWould you like to " + Red + "restart" + End + " the script?\n" + 80 * "═")
-        YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End)
         
+        YesNo = input(Green + "Y" + End + " / " + Red + "N\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End)
         if YesNo == "Y" or YesNo == "y" or YesNo == "Yes" or YesNo == "yes":
-            Exe()
-            
+            Exe() 
         elif YesNo == "N" or YesNo == "n" or YesNo == "No" or YesNo == "no":
             sys.exit()
             subprocess.call('clear', shell=True)
-            
+
     elif inp == "2":
         print("")
-        
     else:
         Bruteforce()
 
 
 
 def Hashcracker():
-    # Fix/work on.
-    print("Enter hash in nano file then 'Ctrl-x' to quit ")
+    # Work in progress
+    filename = str(input(Green + "\nFirst enter a name for the file you'll be using." + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
+    # Will add a function to check if filename is in use
     time.sleep(1.5)
-    filename = str(input(Green + "\nName file." + Green + ".\n" + White + 80 * "═" + Green + "\n [" + White + "*" + Green + "]" + "\n  ╚═> " + End))
+    print("Enter the hash in nano file then do 'Ctrl-x' and 'Y' to quit and save.")
+    time.sleep(1.5)
     os.system("nano " + filename)
+    print(Green + "Good!")
+    time.sleep(1)
     os.system("john " + filename)
-    os.system("mv " + filename + " Database/Other/Hashes/")
+    os.system("mv " + filename + " Database/Hashes/")
 
 
 
@@ -554,5 +434,10 @@ try:
         Exe()
 
 except KeyboardInterrupt:
-    print(Red + "\n\nControl + C Detected!")
-    print("Exiting" + End)
+    subprocess.call('clear', shell=True)
+    print(White + 80 * "═")
+    print(Red + "\nControl + C Detected\n")
+    print(Red + "Exiting\n" + End)
+    print(White + 80 * "═")
+    time.sleep(1)
+    subprocess.call('clear', shell=True)
