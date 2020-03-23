@@ -26,7 +26,7 @@ https://discord.gg/8pKQMUA
 
 # Usage
 
-`python3 blackkit.py`
+`python3 BlackKit.py`
 
 # Update
 

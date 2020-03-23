@@ -127,6 +127,7 @@ def Help():
 
 \033[92m     Command                     Description\033[97m
 ════════════════════════════════════════════════════════════════════════════════
+═════════════════════════════════════════════════════════════════════════════════  
 \033[92m        x               - Will quit the script.
         r               - Will restart the script.
         ping            - Ping a host to see if it's online.
@@ -141,6 +142,7 @@ def Help():
         bruteforce      - Bruteforcing options.
         hashcracker     - Uses John to crack hashes.""")
         print(White + 80 * "═")
+
         Main()
 
 
@@ -338,7 +340,7 @@ def Payload():
     else:
         Payload()
 
-
+        
 
 def Database():
     # Work in progress.
@@ -357,6 +359,7 @@ def Database():
         print(" ")
     else:
         Database()
+
 
 
 
@@ -429,6 +432,7 @@ def Hashcracker():
 try:
     if '__name__' == '__name__':
         Exe()
+
 except KeyboardInterrupt:
     subprocess.call('clear', shell=True)
     print(White + 80 * "═")
