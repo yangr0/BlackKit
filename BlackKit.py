@@ -5,7 +5,7 @@
 
 # Contributors:
 # ---------------
-# @Cracked.keys
+# (I lost interest in this project, make good use of what code is here) Also FYI, When I told you that you should make a community chat this isn't what I meant.
 # @inc0gnit0
 # @
 # @ 
@@ -105,10 +105,6 @@ def Main():
         Whoami() 
     elif inp == "evasion":
         Evasion()
-    elif inp == "payload":
-        Payload()
-    elif inp == "database":
-        Database()
     elif inp == "sniffing":
         Sniffing()
     elif inp == "bruteforce":
@@ -320,46 +316,6 @@ def Evasion():
         Exe()
     else:
         Evasion()
-
-
-
-def Payload():
-    # Work on.
-    subprocess.call('clear', shell=True)
-    print(White + 80 * "═" + "\n")
-    print(White + "[" + Green + "3" + White + "]" + Green + " TCP Payload for MacOS")
-    print(White + "[" + Green + "3" + White + "]" + Green + " TCP Payload for Linux")
-    print(White + "[" + Green + "3" + White + "]" + Green + " TCP Payload for Android")
-    print(White + "[" + Green + "1" + White + "]" + Green + " TCP Payload for Windows")
-    
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
-    if inp == "x":
-        Exe()
-    elif inp == "1":
-        os.system("")
-    else:
-        Payload()
-
-        
-
-def Database():
-    # Work in progress.
-    subprocess.call('clear', shell=True)
-    print(White + 80 * "═" + "\n")
-    print(White + "[" + Green + "1" + White + "]" + Green + " Create Database.")
-    print(White + "[" + Green + "2" + White + "]" + Green + " Show databases")
-    print(White + "[" + Green + "x" + White + "]" + Green + " Main menu.")
-    
-    inp = str(input(Green + "\nChoose a option" + Green + ".\n" + White + 80 * "═" + White + "\n[" + Green + "BlackKit" + White + "]" + Green + "\n  ╚═> " + End))
-    if inp == "x":
-        Exe()
-    elif inp == "1":
-        print(" ")    
-    elif inp == "2":
-        print(" ")
-    else:
-        Database()
-
 
 
 
