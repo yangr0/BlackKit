@@ -31,3 +31,7 @@ https://discord.gg/8pKQMUA
 # Update
 
 `git pull`
+
+# Discontinued
+
+This project is now discontinued
